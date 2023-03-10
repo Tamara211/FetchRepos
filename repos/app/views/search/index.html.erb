@@ -1,0 +1,16 @@
+<h1>Search for repositories</h1>
+
+<%= form_tag(search_path, method: :get) do %>
+  <%= label_tag :query, "Search term" %>
+  <%= text_field_tag :query %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<% if @repos.present? %>
+  <h2>Results:</h2>
+  <ul>
+    <% @repos[:items].each do |repo| %>
+      <li><%= link_to repo[:name], repo[:html_url] %></li>
+    <% end %>
+  </ul>
+<% end %>
